@@ -1,0 +1,496 @@
+/* Modern Design Variables */
+:root {
+  --primary: #4361ee;
+  --primary-light: #4895ef;
+  --danger: #f72585;
+  --danger-light: #ff70a6;
+  --success: #4cc9f0;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-600: #6c757d;
+  --gray-900: #212529;
+  --white: #ffffff;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --transition: all 0.2s ease;
+}
+
+/* Base Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 2rem;
+  letter-spacing: -0.025em;
+}
+
+/* Table Styles */
+.tableWrapper {
+  overflow-x: auto;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 0.5rem;
+}
+
+.userTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.875rem;
+}
+
+.userTable th {
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: 500;
+  text-align: left;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+}
+
+.userTable th:first-child {
+  border-top-left-radius: var(--radius-sm);
+}
+
+.userTable th:last-child {
+  border-top-right-radius: var(--radius-sm);
+}
+
+.userTable td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--gray-200);
+  color: var(--gray-900);
+  vertical-align: middle;
+}
+
+.userTable tr {
+  transition: all 0.3s ease;
+}
+
+.userTable tr.deleting td {
+  border-bottom-width: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: all 0.3s ease;
+}
+
+.userTable tr:last-child td {
+  border-bottom: none;
+}
+
+.userTable tr:hover td {
+  background-color: var(--gray-100);
+}
+
+/* Clickable Rows */
+.clickableRow {
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.clickableRow:hover td {
+  background-color: var(--gray-100);
+}
+
+/* Action Buttons */
+.button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.deleting {
+  animation: fadeOut 0.3s ease-out forwards;
+  overflow: hidden;
+}
+
+.deleteButton {
+  background-color: var(--danger);
+  color: var(--white);
+}
+
+.deleteButton:hover {
+  background-color: var(--danger-light);
+}
+
+.cancelButton {
+  background-color: var(--gray-200);
+  color: var(--gray-900);
+}
+
+.cancelButton:hover {
+  background-color: var(--gray-300);
+}
+
+.deleteConfirmation {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modalContent {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--gray-600);
+  transition: var(--transition);
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.closeButton:hover {
+  background-color: var(--gray-200);
+  color: var(--gray-900);
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.modalSection {
+  background-color: var(--gray-100);
+  padding: 1.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.modalSection h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  font-size: 1.125rem;
+}
+
+.username {
+  color: var(--gray-600);
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.mapLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.875rem;
+}
+
+.mapLink:hover {
+  background-color: var(--primary-light);
+  text-decoration: none;
+}
+
+/* Loading and Error States */
+.loading,
+.error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1rem;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.error {
+  color: var(--danger);
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4bb543;
+  color: white;
+  padding: 0;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+  opacity: 0;
+}
+
+.toastVisible {
+  animation: toastIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.toastHidden {
+  animation: toastOut 0.2s ease-out forwards;
+}
+
+.toastContent {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 10px;
+}
+
+.toastContent span {
+  font-weight: bold;
+}
+
+.toastClose {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 15px;
+  padding: 0 0 0 10px;
+  opacity: 0.8;
+}
+
+.toastClose:hover {
+  opacity: 1;
+}
+
+/* Empty State Styles */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem;
+  max-width: 400px;
+  margin: 2rem auto;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.emptyIllustration {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-300);
+  margin-bottom: 1.5rem;
+}
+
+.emptyIllustration svg {
+  width: 100%;
+  height: 100%;
+}
+
+.emptyTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 0.5rem;
+}
+
+.emptyMessage {
+  color: var(--gray-600);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.refreshButton {
+  padding: 0.5rem 1.5rem;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.refreshButton:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-1px);
+}
+
+.refreshButton:active {
+  transform: translateY(0);
+}
+
+/* Add to your existing :root variables */
+:root {
+  /* ... other variables ... */
+  --radius-lg: 12px;
+}
+
+@keyframes toastIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+@keyframes toastOut {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px) scale(0.95);
+  }
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .userTable td,
+  .userTable th {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .deleteConfirmation {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scaleY(1);
+    max-height: 100px;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0.8);
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-width: 0;
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes overlayFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.modalOverlay {
+  animation: overlayFadeIn 0.3s ease-out forwards;
+}
+
+.modalOverlay.closing {
+  animation: overlayFadeOut 0.2s ease-in forwards;
+}
+
+.modalContent {
+  animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modalContent.closing {
+  animation: modalFadeOut 0.2s ease-in forwards;
+}
